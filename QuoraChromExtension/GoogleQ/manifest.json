@@ -1,0 +1,20 @@
+{
+  "manifest_version": 2,
+
+  "name": "Quora Answer Filter",
+  "description": "The extension allows sorting and filtering of quora answers by upvotes, views and comments",
+  "version": "1.0",
+
+  "browser_action": {
+    "default_icon": "Quora.png",
+    "default_title": "Quora Filter"
+  },
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false
+  },
+  "permissions": [
+    "activeTab",
+    "https://www.quora.com/*"
+  ]
+}
