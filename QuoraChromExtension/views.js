@@ -1,10 +1,11 @@
 function removeK(num){
 	if (num.includes("k")){
 		return parseFloat(num.replace("k",""))*1000;
+	} else if (num.includes("m")){
+		return parseFloat(num.replace("m",""))*1000000;
 	} else {
 		return parseFloat(num);
-	}
-	
+	}	
 }
 
 function removePlus(num){
