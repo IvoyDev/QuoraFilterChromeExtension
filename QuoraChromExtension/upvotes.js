@@ -7,7 +7,6 @@ function removeK(num){
 		return parseFloat(num);
 	}	
 }
-
 function removePlus(num){
 	if (num==null){
 		return 0;
@@ -19,12 +18,24 @@ function removePlus(num){
 	}	
 }
 
-var objDiv = document.getElementsByClassName("PagedListMoreButton")[0];
-objDiv.scrollTop = objDiv.scrollHeight;
-
 var answerList = document.getElementsByClassName('AnswerPagedList')[0];
 var moreAnsButton = answerList.getElementsByClassName('PagedListMoreButton')[0].parentNode;
 moreAnsButton.parentNode.removeChild(moreAnsButton);
+
+var promotionList = answerList.getElementsByClassName('answer_area_content');
+
+for (var i =0; i<promotionList.length;i++){
+	var promotion = promotionList[i].parentNode.parentNode;
+	promotion.parentNode.removeChild(promotion);
+}
+//removed collapsed answers
+var collapsedList;
+if (typeof(answerList.getElementsByClassName('CollapsedAnswersSectionCollapsed')[0]) != 'undefined')
+{
+	collapsedList = answerList.getElementsByClassName('CollapsedAnswersSectionCollapsed')[0].parentNode.parentNode.parentNode;
+	collapsedList.parentNode.removeChild(collapsedList);
+}
+//main
 
 var answers = Array.prototype.slice.call(answerList.children,0);
 
@@ -41,11 +52,22 @@ answerList.innerHTML = "";
 
 //by upvotes
 for (var i=0;i<sortedList.length;i++){
-	sortedList[i].setAttribute('class', 'pagedlist_item');
-	sortedList[i].removeAttribute('style');
+	if (i>7 && i>sortedList.length-7){
+		sortedList[i].setAttribute('class', 'pagedlist_item pagedlist_hidden');
+		sortedList[i].style.display='none';
+	} else {
+		sortedList[i].setAttribute('class', 'pagedlist_item');
+		sortedList[i].removeAttribute('style');		
+	}
 	answerList.appendChild(sortedList[i]);
 }
 
+for (var i =0; i<promotionList.length;i++){
+	var promotion = promotionList[i].parentNode.parentNode;
+	answerList.appendChild(promotion);
+}
+if (collapsedList!=null){
+	answerList.appendChild(collapsedList);
+}
 answerList.appendChild(moreAnsButton);
-
 window.scrollTo(0,0);
