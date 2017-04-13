@@ -17,9 +17,7 @@ self.GetAnswerBoxes = function()
 self.ShowAllAnswers = function()
 {	
 	var totalAnswersTxt = $(".answer_count").text();
-	console.log(totalAnswersTxt);
 	var totalAnswers = parseInt($(".answer_count").text());
-	console.log(totalAnswers);
 	var answerBoxHolder = $(".AnswerPagedList");
 	var loaderBar = answerBoxHolder.children(":not(.pagedlist_item)");
 	var loaderDiv = $(".pager_sentinel");
@@ -42,12 +40,10 @@ self.ShowAllAnswers = function()
 		if (loaded < prevLoaded){
 			loaded = prevLoaded;
 		}
-		console.log(totalAnswers);
 		prevLoaded = loaded;
 		$(".answer_count").html(totalAnswersTxt + " "+ loaded.toFixed(1) +"% Loaded...");
 		
 		if (prevShownCount==shownCount){
-			//console.log(prevShownCount+" "+shownCount+" "+totalAnswers+" "+stopCheck);
 			stopCheck--;
 		} else {
 			stopCheck=50;
