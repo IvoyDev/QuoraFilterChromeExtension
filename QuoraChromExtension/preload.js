@@ -26,6 +26,19 @@ self.ShowAllAnswers = function()
 	var prevShownCount = 0;
 	var stopCheck = 50;
 	var prevLoaded =0;
+	var dot = 1;
+	var dotMap = {
+		0:"",
+		1:".",
+		2:".",
+		3:".",
+		4:"..",
+		5:"..",
+		6:"..",
+		7:"...",
+		8:"...",
+		9:"...",		
+	}
 	var loadingComplete = function()
 	{
 		$(".answer_count").html(totalAnswersTxt);
@@ -41,7 +54,8 @@ self.ShowAllAnswers = function()
 			loaded = prevLoaded;
 		}
 		prevLoaded = loaded;
-		$(".answer_count").html(totalAnswersTxt + " "+ loaded.toFixed(1) +"% Loaded...");
+		dot = (dot+1)%10;
+		$(".answer_count").html(totalAnswersTxt + " "+ loaded.toFixed(1) +"% Loaded"+dotMap[dot]);
 		
 		if (prevShownCount==shownCount){
 			stopCheck--;
@@ -61,7 +75,7 @@ self.ShowAllAnswers = function()
 		}else
 		{	
 			setTimeout(loadingComplete, 1000);
-			$(".answer_count").html(totalAnswersTxt + " 100% Loaded...");
+			$(".answer_count").html(totalAnswersTxt + " 100% Loaded");
 			loaderDiv.appendTo(loaderBar);
 			tempHolder.remove();
 			return;
