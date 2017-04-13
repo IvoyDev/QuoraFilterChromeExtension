@@ -84,4 +84,5 @@ if (collapsedList!=null){
 }
 answerList.appendChild(moreAnsButton);
 
-window.scrollTo(0,0);
+document.getElementsByClassName('QuestionPageAnswerHeader')[0].scrollIntoView( true );
+window.scrollBy(0,-62);

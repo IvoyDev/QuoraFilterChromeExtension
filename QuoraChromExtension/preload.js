@@ -85,5 +85,6 @@ self.ShowAllAnswers = function()
 	totalAnswers = parseInt($(".answer_count").text());
 	return;
 };
-window.scrollTo(0,0);
+document.getElementsByClassName('QuestionPageAnswerHeader')[0].scrollIntoView( true );
+window.scrollBy(0,-62);
 self.ShowAllAnswers();
