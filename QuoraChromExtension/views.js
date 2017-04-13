@@ -51,7 +51,7 @@ answerList.innerHTML = "";
 
 //by views
 for (var i=0;i<sortedListByViews.length;i++){
-	if (i>7 && i>sortedListByViews.length-7){
+	if (i>7){
 		sortedListByViews[i].setAttribute('class', 'pagedlist_item pagedlist_hidden');
 		sortedListByViews[i].style.display='none';
 	} else {

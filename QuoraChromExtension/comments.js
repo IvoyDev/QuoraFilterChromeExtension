@@ -42,7 +42,7 @@ var answers = Array.prototype.slice.call(answerList.children,0);
 
 //sorted by comments
 var sortedListByComments = answers.sort(function(a,b){
-	if (a.getElementsByClassName('count')[0] != null && b.getElementsByClassName('count')[0] != null){
+	if (typeof(a.getElementsByClassName('count')[0]) != 'undefined' && typeof(b.getElementsByClassName('count')[0]) != 'undefined'){
 		if (typeof(a.getElementsByClassName('count')[1])=='undefined'){
 			return 1;
 		}
@@ -54,16 +54,18 @@ var sortedListByComments = answers.sort(function(a,b){
 		} else {
 			return 1;
 		}
-	} else {
+	} else if (typeof(a.getElementsByClassName('count')[0]) == 'undefined') {
 		return 1;
-	}	
+	} else if (typeof(b.getElementsByClassName('count')[0]) == 'undefined') {
+		return -1;
+	}
 });
 
 answerList.innerHTML = "";
 
 //by comments
 for (var i=0;i<sortedListByComments.length;i++){
-	if (i>7 && i>sortedListByComments.length-7){
+	if (i>7){
 		sortedListByComments[i].setAttribute('class', 'pagedlist_item pagedlist_hidden');
 		sortedListByComments[i].style.display='none';
 	} else {

@@ -52,7 +52,7 @@ answerList.innerHTML = "";
 
 //by upvotes
 for (var i=0;i<sortedList.length;i++){
-	if (i>7 && i>sortedList.length-7){
+	if (i>7){
 		sortedList[i].setAttribute('class', 'pagedlist_item pagedlist_hidden');
 		sortedList[i].style.display='none';
 	} else {

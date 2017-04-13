@@ -22,7 +22,6 @@ function parseDate(date){
 		'Sat':5,
 		'Sun':6
 	}
-	console.log(date);
 	var d;
 	date = date.replace("Updated ","");
 	date = date.replace("Written ","");
@@ -59,7 +58,6 @@ function parseDate(date){
 			d.setDate(d.getDate()- (d.getDay() - weekDay));
 		}
 	}	
-	console.log(d);
 	return d;
 }
 
@@ -101,7 +99,7 @@ answerList.innerHTML = "";
 
 //by comments
 for (var i=0;i<sortedListByRecency.length;i++){
-	if (i>7 && i>sortedListByRecency.length-7){
+	if (i>7){
 		sortedListByRecency[i].setAttribute('class', 'pagedlist_item pagedlist_hidden');
 		sortedListByRecency[i].style.display='none';
 	} else {
