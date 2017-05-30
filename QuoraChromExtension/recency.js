@@ -11,7 +11,7 @@ function parseDate(date){
 		'Sep':8,
 		'Oct':9,
 		'Nov':10,
-		'Dec':11	
+		'Dec':11
 	}
 	var weekMap = {
 		'Mon':0,
@@ -25,7 +25,8 @@ function parseDate(date){
 	var d;
 	date = date.replace("Updated ","");
 	date = date.replace("Written ","");
-	
+	date = date.replace("Answered ", "");
+
 	if (date.includes("ago")){
 		date = date.replace(" ago","");
 		d = new Date();
@@ -35,11 +36,11 @@ function parseDate(date){
 			d.setMinutes(d.getMinutes() - parseInt(date.replace("m","")));
 		} else if (date.includes("s")){
 			d.setSeconds(d.getSeconds() - parseInt(date.replace("s","")));
-		}		
+		}
 	} else if (date.includes(",")){
 		date.replace(",","");
 		var tempD = date.split(" ");
-		d = new Date(parseInt(tempD[2]),parseInt(monthMap[tempD[0]]),parseInt(tempD[1]));	
+		d = new Date(parseInt(tempD[2]),parseInt(monthMap[tempD[0]]),parseInt(tempD[1]));
 	} else if (date.includes(" ")){
 		var tempD = date.split(" ");
 		var month =  parseInt(monthMap[tempD[0]]);
@@ -57,7 +58,7 @@ function parseDate(date){
 		} else {
 			d.setDate(d.getDate()- (d.getDay() - weekDay));
 		}
-	}	
+	}
 	return d;
 }
 
@@ -92,7 +93,7 @@ var sortedListByRecency = answers.sort(function(a,b){
 		return -1;
 	} else {
 		return 1;
-	}	
+	}
 });
 
 answerList.innerHTML = "";
